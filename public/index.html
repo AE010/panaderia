@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Panadería "La Desesperanza"</title>
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a la Panadería "La Desesperanza"</h1>
+    </header>
+    <main>
+        <div class="carousel">
+            <img src="img/image1.jfif" alt="Imagen 1" class="active" width="300" height="200">
+            <img src="img/image2.jfif" alt="Imagen 2" width="300" height="200">
+            <img src="img/image3.jfif" alt="Imagen 3" width="300" height="200">
+        </div>
+        
+
+        <form id="producto-form">
+            <input type="text" id="nombre" placeholder="Nombre del producto" required>
+            <input type="number" id="cantidad" placeholder="Cantidad" required min="0">
+            <input type="number" id="precio" placeholder="Precio" required min="0" step="0.01">
+            <textarea id="descripcion" placeholder="Descripción" required rows="4" style="resize:none;"></textarea>
+            <button class="add-product" type="submit">Agregar Producto</button>
+        </form>
+        <table id="productos-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".carousel img");
+
+        function changeSlide(n) {
+            slideIndex = (slideIndex + n + slides.length) % slides.length;
+            showSlides();
+        }
+
+        function showSlides() {
+            slides.forEach(slide => slide.style.opacity = "0"); 
+            slides[slideIndex].style.opacity = "1";
+        }
+
+        setInterval(() => {
+            changeSlide(1);  
+        }, 3000);
+
+        showSlides(); 
+    </script>
+</body>
+</html>
